@@ -124,11 +124,11 @@ export default function Home() {
               <div className="space-y-6">
                 
                 {/* Proj 1 */}
-                <a href="#" target="_blank" rel="noreferrer" className="block liquid-glass p-8 group relative transition-all hover:scale-[1.01]">
+                <div /* href="#" target="_blank" rel="noreferrer" */ className="block liquid-glass p-8 group relative transition-all hover:scale-[1.01]">
                   <div className="z-10">
                     <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
                       Real-Time Multimodal Q&A System
-                      <ArrowUpRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" />
+                      {/* <ArrowUpRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" /> */}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
                       Built a live multimodal question-answering pipeline using Qwen2-0.5B-Instruct and Apple's FastVLM, achieving a Time To First Token (TTFT) of under 100ms. Engineered an INT8 quantization and ONNX-based deployment pipeline, leveraging NPU acceleration via Core ML to achieve a total 4x reduction in inference latency.
@@ -140,14 +140,14 @@ export default function Home() {
                        <li><span className="flex items-center rounded-full bg-teal-400/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">&lt;100ms TTFT</span></li>
                     </ul>
                   </div>
-                </a>
+                </div>
 
                 {/* Proj 2 */}
-                <a href="#" target="_blank" rel="noreferrer" className="block liquid-glass p-8 group relative transition-all hover:scale-[1.01]">
+                <div /* href="#" target="_blank" rel="noreferrer" */ className="block liquid-glass p-8 group relative transition-all hover:scale-[1.01]">
                   <div className="z-10">
                     <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
                       Privacy-Preserving Edge ML (Yoga)
-                      <ArrowUpRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" />
+                      {/* <ArrowUpRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" /> */}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
                       Architected a privacy-centric AI pipeline using 100% on-device computation to ensure data isolation. Engineered a Knowledge Graph of 190+ poses and optimized a Graph Neural Network (GNN) via knowledge distillation into a lightweight Core ML model specifically optimized for the Apple Neural Engine (ANE).
@@ -158,14 +158,14 @@ export default function Home() {
                        <li><span className="flex items-center rounded-full bg-teal-400/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">100% On-Device</span></li>
                     </ul>
                   </div>
-                </a>
+                </div>
 
                  {/* Proj 3 */}
-                <a href="#" target="_blank" rel="noreferrer" className="block liquid-glass p-8 group relative transition-all hover:scale-[1.01]">
+                <div /* href="#" target="_blank" rel="noreferrer" */ className="block liquid-glass p-8 group relative transition-all hover:scale-[1.01]">
                   <div className="z-10">
                     <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
                       Neuromorphic vs. Transformer Benchmarking
-                      <ArrowUpRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" />
+                      {/* <ArrowUpRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" /> */}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
                       Conducted accurate performance benchmarking comparing a pre-trained DistilBERT and a custom-built Spiking Neural Network (SNN) on a 20,000-sample NLP classification task. Fine-tuned the SNN to balance the accuracy/compute trade-off, achieving 81% of BERT's accuracy while being 48x more computationally efficient.
@@ -176,7 +176,7 @@ export default function Home() {
                        <li><span className="flex items-center rounded-full bg-teal-400/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">48x Efficiency</span></li>
                     </ul>
                   </div>
-                </a>
+                </div>
 
               </div>
             </section>
