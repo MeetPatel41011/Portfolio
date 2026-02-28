@@ -45,7 +45,7 @@ export default function Home() {
                   style={{ width: highlightWidth }}
                   className="absolute inset-y-0 left-0 bg-[#44ebd4] -z-10"
                 />
-                <span className="px-2">
+                <span>
                   Meet Patel
                 </span>
               </h1>
