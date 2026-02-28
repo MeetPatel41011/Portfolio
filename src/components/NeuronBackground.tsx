@@ -170,7 +170,7 @@ export function NeuronBackground() {
       edges.forEach((edge) => {
         // Base visibility is low. Lights up if nodes are active.
         const activity = Math.max(edge.from.activation, edge.to.activation);
-        const opacity = 0.08 + (activity * 0.3) + (edge.weight * 0.05);
+        const opacity = 0.15 + (activity * 0.4) + (edge.weight * 0.1);
         
         ctx.strokeStyle = `rgba(45, 212, 191, ${opacity})`;
         ctx.beginPath();
@@ -306,9 +306,9 @@ export function NeuronBackground() {
     <div className="fixed inset-0 z-0 pointer-events-none bg-[#020617]">
       <canvas
         ref={canvasRef}
-        className="w-full h-full opacity-30"
+        className="w-full h-full opacity-50"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/80 to-[#020617] opacity-90" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/70 to-[#020617] opacity-70" />
     </div>
   );
 }
