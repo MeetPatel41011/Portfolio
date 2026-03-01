@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Github, Linkedin, Mail, ArrowUpRight, ChevronRight, Download } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { NeuronBackground } from '@/components/NeuronBackground';
@@ -18,11 +18,16 @@ export default function Home() {
   // It starts at 10% into the scroll margin and finishes by 45%
   const highlightWidth = useTransform(scrollYProgress, [0.1, 0.45], ["0%", "100%"]);
   
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      const cards = document.querySelectorAll('.liquid-glass');
+      cards.forEach((card) => {
+        const rect = (card as HTMLElement).getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+        (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+      });
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
@@ -43,7 +48,7 @@ export default function Home() {
               <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-lg relative inline-block">
                 <motion.span 
                   style={{ width: highlightWidth }}
-                  className="absolute inset-y-0 left-0 bg-[#44ebd4] -z-10"
+                  className="absolute inset-y-0 left-0 bg-[#298f88] -z-10"
                 />
                 <span>
                   Meet Patel
@@ -143,7 +148,7 @@ export default function Home() {
               <div className="space-y-6">
                 
                 {/* Proj 1 */}
-                <div /* href="#" target="_blank" rel="noreferrer" */ className="block liquid-glass p-8 group relative transition-all hover:scale-[1.01]">
+                <div /* href="#" target="_blank" rel="noreferrer" */ className="block liquid-glass p-8 group relative">
                   <div className="z-10">
                     <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
                       Real-Time Multimodal Q&A System
@@ -162,7 +167,7 @@ export default function Home() {
                 </div>
 
                 {/* Proj 2 */}
-                <div /* href="#" target="_blank" rel="noreferrer" */ className="block liquid-glass p-8 group relative transition-all hover:scale-[1.01]">
+                <div /* href="#" target="_blank" rel="noreferrer" */ className="block liquid-glass p-8 group relative">
                   <div className="z-10">
                     <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
                       Privacy-Preserving Edge ML (Yoga)
@@ -180,7 +185,7 @@ export default function Home() {
                 </div>
 
                  {/* Proj 3 */}
-                <div /* href="#" target="_blank" rel="noreferrer" */ className="block liquid-glass p-8 group relative transition-all hover:scale-[1.01]">
+                <div /* href="#" target="_blank" rel="noreferrer" */ className="block liquid-glass p-8 group relative">
                   <div className="z-10">
                     <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
                       Neuromorphic vs. Transformer Benchmarking
@@ -211,7 +216,7 @@ export default function Home() {
               <div className="space-y-6">
                 
                 {/* Exp 1 */}
-                <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8 transition-all hover:scale-[1.01]">
+                <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
                   <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2025 to Present">
                     Jan 2025 — Present
                     <div className="mt-2 text-[10px] text-slate-500 font-medium">1 year 1 month 28 days</div>
@@ -233,7 +238,7 @@ export default function Home() {
                 </div>
 
                 {/* Exp 2 */}
-                <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8 transition-all hover:scale-[1.01]">
+                <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
                   <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2025 to Present">
                     Sep 2025 — Present
                     <div className="mt-2 text-[10px] text-slate-500 font-medium">5 months 28 days</div>
@@ -254,7 +259,7 @@ export default function Home() {
                 </div>
 
                 {/* Exp 3 */}
-                <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8 transition-all hover:scale-[1.01]">
+                <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
                   <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2023">
                     Jan 2023 — Apr 2023
                     <div className="mt-2 text-[10px] text-slate-500 font-medium">4 months</div>
@@ -275,7 +280,7 @@ export default function Home() {
                 </div>
 
                  {/* Exp 4 */}
-                <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8 transition-all hover:scale-[1.01]">
+                <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
                   <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2024">
                     Sep 2024 — Dec 2024
                     <div className="mt-2 text-[10px] text-slate-500 font-medium">4 months</div>
@@ -306,7 +311,7 @@ export default function Home() {
                 </h2>
               </div>
               
-              <div className="liquid-glass p-12 md:p-16 text-center rounded-[2rem] border border-white/5 relative overflow-hidden group">
+              <div className="liquid-glass p-12 md:p-16 text-center relative overflow-hidden group">
                  <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">
                    Let&apos;s build the <span className="relative inline-block px-2 overflow-hidden">
                      <motion.span 
@@ -322,7 +327,7 @@ export default function Home() {
                    Currently open to opportunities bridging complex mathematical theory and high-performance system engineering.
                  </p>
                  
-                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
+                 <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-10">
                    <div className="flex flex-col items-center gap-3 w-full sm:w-auto">
                      <a 
                        href="mailto:m.patel6@student.fdu.edu" 

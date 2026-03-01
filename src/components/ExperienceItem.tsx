@@ -9,7 +9,7 @@ interface ExperienceItemProps {
 
 export function ExperienceItem({ role, company, period, description }: ExperienceItemProps) {
   return (
-    <article className="mb-12 relative group liquid-glass p-8 transition-all hover:scale-[1.01]">
+    <article className="mb-12 relative group liquid-glass p-8">
       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-4 gap-2 sm:gap-4">
         <h3 className="text-xl font-semibold text-slate-100 group-hover:text-blue-400 transition-colors">
           {role} <span className="text-slate-400 font-normal">at {company}</span>
