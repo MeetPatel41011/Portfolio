@@ -1,9 +1,56 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Github, Linkedin, Mail, ArrowUpRight, ChevronRight, Download } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { NeuronBackground } from '@/components/NeuronBackground';
+
+function LiveDuration({ start, end }: { start: string; end: string }) {
+  const [duration, setDuration] = useState('');
+
+  useEffect(() => {
+    const calculateDuration = () => {
+      const startDate = new Date(start);
+      let endDate;
+      
+      if (end.toLowerCase() === 'present') {
+        endDate = new Date();
+      } else {
+        const parsedEnd = new Date(end);
+        // Set to last day of the month, 23:59:59
+        endDate = new Date(parsedEnd.getFullYear(), parsedEnd.getMonth() + 1, 0, 23, 59, 59);
+      }
+
+      let years = endDate.getFullYear() - startDate.getFullYear();
+      let months = endDate.getMonth() - startDate.getMonth();
+      let days = endDate.getDate() - startDate.getDate();
+
+      if (days < 0) {
+        months--;
+        const prevMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0);
+        days += prevMonth.getDate();
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      const parts = [];
+      if (years > 0) parts.push(`${years} year${years !== 1 ? 's' : ''}`);
+      if (months > 0) parts.push(`${months} month${months !== 1 ? 's' : ''}`);
+      if (days > 0) parts.push(`${days} day${days !== 1 ? 's' : ''}`);
+
+      setDuration(parts.length > 0 ? parts.join(' ') : '0 days');
+    };
+
+    calculateDuration();
+    // Update every second so changes at 11:59:59 PM trigger instantly
+    const interval = setInterval(calculateDuration, 1000);
+    return () => clearInterval(interval);
+  }, [start, end]);
+
+  return <span>{duration}</span>;
+}
 
 export default function Home() {
   const contactRef = useRef(null);
@@ -219,7 +266,7 @@ export default function Home() {
                 <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
                   <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2025 to Present">
                     Jan 2025 — Present
-                    <div className="mt-2 text-[10px] text-slate-500 font-medium">1 year 1 month 28 days</div>
+                    <div className="mt-2 text-[10px] text-slate-500 font-medium"><LiveDuration start="Jan 2025" end="Present" /></div>
                   </header>
                   <div className="z-10 md:w-3/4">
                     <h3 className="text-xl font-bold text-white group/link leading-snug">
@@ -241,7 +288,7 @@ export default function Home() {
                 <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
                   <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2025 to Present">
                     Sep 2025 — Present
-                    <div className="mt-2 text-[10px] text-slate-500 font-medium">5 months 28 days</div>
+                    <div className="mt-2 text-[10px] text-slate-500 font-medium"><LiveDuration start="Sep 2025" end="Present" /></div>
                   </header>
                   <div className="z-10 md:w-3/4">
                     <h3 className="text-xl font-bold text-white group/link leading-snug">
@@ -262,7 +309,7 @@ export default function Home() {
                 <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
                   <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2023">
                     Jan 2023 — Apr 2023
-                    <div className="mt-2 text-[10px] text-slate-500 font-medium">4 months</div>
+                    <div className="mt-2 text-[10px] text-slate-500 font-medium"><LiveDuration start="Jan 2023" end="Apr 2023" /></div>
                   </header>
                   <div className="z-10 md:w-3/4">
                     <h3 className="text-xl font-bold text-white group/link leading-snug">
@@ -283,7 +330,7 @@ export default function Home() {
                 <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
                   <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2024">
                     Sep 2024 — Dec 2024
-                    <div className="mt-2 text-[10px] text-slate-500 font-medium">4 months</div>
+                    <div className="mt-2 text-[10px] text-slate-500 font-medium"><LiveDuration start="Sep 2024" end="Dec 2024" /></div>
                   </header>
                   <div className="z-10 md:w-3/4">
                     <h3 className="text-xl font-bold text-white group/link leading-snug">
