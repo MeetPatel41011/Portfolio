@@ -52,8 +52,6 @@ export function NeuronBackground() {
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       ctx.scale(dpr, dpr);
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
 
       layers = [];
       edges = [];
@@ -276,26 +274,46 @@ export function NeuronBackground() {
       mouse.y = e.clientY;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+      }
+    };
+
     const handleMouseLeave = () => {
       mouse.x = -1000;
       mouse.y = -1000;
     };
     
+    let lastWidth = window.innerWidth;
     let resizeTimeout: NodeJS.Timeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(init, 200);
+      resizeTimeout = setTimeout(() => {
+        // Only re-init if width changes to prevent reset on mobile scroll (address bar hide/show)
+        if (window.innerWidth !== lastWidth) {
+          lastWidth = window.innerWidth;
+          init();
+        }
+      }, 200);
     };
 
     init();
     draw();
 
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleMouseLeave);
     window.addEventListener("mouseout", handleMouseLeave);
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchMove);
+      window.removeEventListener("touchend", handleMouseLeave);
       window.removeEventListener("mouseout", handleMouseLeave);
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);

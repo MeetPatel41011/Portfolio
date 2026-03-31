@@ -262,6 +262,29 @@ export default function Home() {
               
               <div className="space-y-6">
                 
+                {/* Incoming Exp */}
+                <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8 border border-teal-400/20 bg-teal-900/10 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-transparent opacity-50"></div>
+                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-teal-400 shrink-0 md:w-1/4" aria-label="May 2026 to July 2026">
+                    May 2026 — Jul 2026
+                    <div className="mt-2 text-[10px] text-teal-500 font-bold uppercase tracking-widest bg-teal-400/10 inline-block px-2 py-1 rounded-md border border-teal-400/20">Incoming</div>
+                  </header>
+                  <div className="z-10 md:w-3/4">
+                    <h3 className="text-xl font-bold text-white group/link leading-snug">
+                      <div>Deep Learning Intern</div>
+                      <div className="text-slate-400 font-medium text-lg mt-1">NJ Department of Health (DOH)</div>
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
+                      Selected to develop and deploy a neural network to automate the quality classification of newborn screening (NBS) blood spot specimens. Tasked with conducting statistical data analysis to evaluate experimental error rates and determining the viability of utilizing unsatisfactory biological samples for diagnostic testing, informing future medical testing protocols.
+                    </p>
+                    <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Deep Learning</span></li>
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Neural Networks</span></li>
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Statistical Analysis</span></li>
+                    </ul>
+                  </div>
+                </div>
+
                 {/* Exp 1 */}
                 <div className="liquid-glass p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
                   <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2025 to Present">
