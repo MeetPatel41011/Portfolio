@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 
 interface MagneticButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  as?: any;
+  as?: React.ElementType;
   href?: string;
   target?: string;
   rel?: string;

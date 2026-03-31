@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Github, Linkedin, Mail, ArrowUpRight, ChevronRight, Download } from 'lucide-react';
+import { Linkedin, Mail, ChevronRight, Download } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { NeuronBackground } from '@/components/NeuronBackground';
 

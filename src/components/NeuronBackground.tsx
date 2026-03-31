@@ -45,7 +45,7 @@ export function NeuronBackground() {
     let edges: Edge[] = [];
     let signals: Signal[] = [];
     let animationFrameId: number;
-    let mouse = { x: -1000, y: -1000 };
+    const mouse = { x: -1000, y: -1000 };
 
     const init = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2); 
