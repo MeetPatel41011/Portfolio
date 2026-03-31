@@ -176,7 +176,7 @@ export default function Home() {
                    TL;DR
                  </div>
                  <p className="text-xl md:text-2xl text-white font-medium leading-snug tracking-tight glass-text">
-                   I build high-performance ML systems that bridge the gap between theoretical models and <span className="text-teal-300">latency-constrained edge environments</span>.
+                   I build high-performance ML systems that bridge the gap between theoretical models and <span className="text-teal-300">latency-constrained edge environments.</span>
                  </p>
                  <p className="text-slate-300 leading-relaxed font-medium glass-text">
                    My expertise lies in hardware-aware machine learning and on-device computation. I specialize in deploying models directly to edge devices utilizing Apple Silicon (Core ML / ANE), implementing rigorous INT8 quantization, optimizing complex Vision-Language Models (VLMs), and building scalable multi-agent frameworks. My research actively focuses on maximizing inference throughput while strictly maintaining data privacy through localized compute.
