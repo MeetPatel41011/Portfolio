@@ -390,7 +390,7 @@ export default function Home() {
                    </div>
 
                    <a 
-                     href="/Meet%20Patel_Resume.pdf" 
+                     href="/Meet%20Patel-Resume.pdf" 
                      target="_blank" 
                      rel="noopener noreferrer"
                      className="inline-flex items-center justify-center gap-3 bg-white/5 text-white border border-white/10 px-10 py-4 rounded-full font-bold text-xs tracking-[0.15em] uppercase transition-all duration-500 hover:bg-white/10 hover:border-white/20 w-full sm:w-auto"
