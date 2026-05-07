@@ -90,8 +90,8 @@ export default function Home() {
   return (
     <div className="bg-slate-950 leading-relaxed text-slate-400 antialiased selection:bg-teal-300 selection:text-teal-900 min-h-screen relative">
       
-      {/* Interactive Neuron Background */}
-      <NeuronBackground />
+      {/* Interactive Neuron Background - forced remount to apply new color logic */}
+      <NeuronBackground key="neuron-bg-golden-update" />
 
       {/* Optimized Noise Overlay */}
       <div className="noise-overlay" />

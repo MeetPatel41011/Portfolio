@@ -14,6 +14,7 @@ interface Node {
   activation: number;
   cooldown: number;
   outgoingEdges: Edge[];
+  activationType?: 'mouse' | 'auto';
 }
 
 interface Edge {
@@ -26,6 +27,7 @@ interface Signal {
   edge: Edge;
   progress: number;
   speed: number;
+  type?: 'mouse' | 'auto';
 }
 
 export function NeuronBackground() {
@@ -155,10 +157,14 @@ export function NeuronBackground() {
             // Mouse forces the neuron to fire if ready
             if (influence > 0.5 && node.cooldown <= 0 && Math.random() < 0.1) {
                node.activation = 1;
-               node.cooldown = 30;
+               node.cooldown = 25;
+               node.activationType = 'mouse';
+               let firedCount = 0;
                node.outgoingEdges.forEach(edge => {
-                  if (signals.length < 1000) { // Global cap
-                    signals.push({ edge, progress: 0, speed: 0.01 + Math.random() * 0.01 });
+                  // Limit to firing down 4 paths maximum to prevent explosion
+                  if (firedCount < 4 && signals.length < 1500) { 
+                    signals.push({ edge, progress: 0, speed: 0.015 + Math.random() * 0.01, type: 'mouse' });
+                    firedCount++;
                   }
                });
             }
@@ -173,7 +179,13 @@ export function NeuronBackground() {
         const activity = Math.max(edge.from.activation, edge.to.activation);
         const opacity = 0.15 + (activity * 0.4) + (edge.weight * 0.1);
         
-        ctx.strokeStyle = `rgba(45, 212, 191, ${opacity})`;
+        // Check if the dominant activating node is a mouse node
+        const isMouseEdge = (edge.from.activation > edge.to.activation && edge.from.activationType === 'mouse') || 
+                            (edge.to.activation >= edge.from.activation && edge.to.activationType === 'mouse');
+                            
+        const rgb = isMouseEdge ? '250, 204, 21' : '45, 212, 191';
+        
+        ctx.strokeStyle = `rgba(${rgb}, ${opacity})`;
         ctx.beginPath();
         ctx.moveTo(edge.from.x, edge.from.y);
         ctx.lineTo(edge.to.x, edge.to.y);
@@ -181,14 +193,18 @@ export function NeuronBackground() {
       });
 
       // 3. Spontaneous Forward Pass (Batch Inference Simulation)
-      if (Math.random() < 0.01 && signals.length < 50) { // Only start waves if network is quiet
+      const autoSignalsCount = signals.filter(s => s.type !== 'mouse').length;
+      if (Math.random() < 0.01 && autoSignalsCount < 100) { // Only start waves if background network is relatively quiet
         layers[0].forEach(node => {
-           if (Math.random() > 0.3) { // 70% of input nodes fire
+           if (Math.random() > 0.4) { // 60% of input nodes fire
              node.activation = 1;
-             node.cooldown = 40;
+             node.cooldown = 30;
+             node.activationType = 'auto';
+             let firedCount = 0;
              node.outgoingEdges.forEach(edge => {
-               if (signals.length < 1000) {
-                 signals.push({ edge, progress: 0, speed: 0.01 + Math.random() * 0.015 });
+               if (firedCount < 3 && signals.length < 1500) {
+                 signals.push({ edge, progress: 0, speed: 0.015 + Math.random() * 0.015, type: 'auto' });
+                 firedCount++;
                }
              });
            }
@@ -202,65 +218,77 @@ export function NeuronBackground() {
 
         if (s.progress >= 1) {
           const target = s.edge.to;
-          // Integrate signal
-          target.activation += s.edge.weight * 0.35; // Slightly reduced impact
+          target.activation += s.edge.weight * 1.5; 
+          
+          const isMouseSignal = s.type === 'mouse';
+          
+          if (isMouseSignal) {
+             target.activationType = 'mouse';
+          }
+          
           signals.splice(i, 1);
           
-          // Activation function (Threshold / Step)
-          if (target.activation >= 0.85 && target.cooldown <= 0) { // Increased threshold to 0.85
+          // Mouse signals can bypass cooldown to ensure they don't get killed by background traffic
+          if (target.activation >= 0.75 && (target.cooldown <= 0 || isMouseSignal)) { 
             target.activation = 1;
-            target.cooldown = 35; // Longer refractory period
+            target.cooldown = 20; 
             
-            // Forward propagate
-            target.outgoingEdges.forEach(edge => {
-              // Higher weight + probability check to prevent saturation
-              if (Math.random() < edge.weight * 0.6 && signals.length < 1000) { 
-                signals.push({ edge, progress: 0, speed: 0.01 + Math.random() * 0.015 });
+            const outType = s.type || 'auto';
+            target.activationType = outType; // Force the node to match the explosive signal
+            
+            // Randomly select 2-5 edges on the fly to prevent permanent dead zones
+            const maxFires = 2 + Math.floor(Math.random() * 4); 
+            const shuffledEdges = [...target.outgoingEdges].sort(() => Math.random() - 0.5);
+            let firedCount = 0;
+
+            for (const edge of shuffledEdges) {
+              if (firedCount >= maxFires) break;
+              if (Math.random() < edge.weight + 0.2 && signals.length < 1500) { 
+                  signals.push({ edge, progress: 0, speed: 0.015 + Math.random() * 0.015, type: outType });
+                  firedCount++;
               }
-            });
+            }
           }
           continue;
         }
 
-        // Calculate positions for the "data packet" trail
         const currX = s.edge.from.x + (s.edge.to.x - s.edge.from.x) * s.progress;
         const currY = s.edge.from.y + (s.edge.to.y - s.edge.from.y) * s.progress;
 
-        const tailProgress = Math.max(0, s.progress - 0.15); // 15% length tail
+        const tailProgress = Math.max(0, s.progress - 0.15);
         const tailX = s.edge.from.x + (s.edge.to.x - s.edge.from.x) * tailProgress;
         const tailY = s.edge.from.y + (s.edge.to.y - s.edge.from.y) * tailProgress;
+const isMouse = s.type === 'mouse';
+ctx.strokeStyle = isMouse ? `rgba(250, 204, 21, 0.8)` : `rgba(45, 212, 191, 0.4)`;
+ctx.lineWidth = 1.5; // Normalized thickness
+ctx.beginPath();
+ctx.moveTo(currX, currY);
+ctx.lineTo(tailX, tailY);
+ctx.stroke();
 
-        // Draw Trail without expensive per-frame gradient instantiation
-        ctx.strokeStyle = `rgba(45, 212, 191, 0.4)`;
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(currX, currY);
-        ctx.lineTo(tailX, tailY);
-        ctx.stroke();
-
-        // Draw Bright Head
-        ctx.fillStyle = "#ffffff";
-        ctx.beginPath();
-        ctx.arc(currX, currY, 1.5, 0, Math.PI * 2);
-        ctx.fill();
+// Draw Bright Head
+ctx.fillStyle = isMouse ? "#fef08a" : "#ffffff";
+ctx.beginPath();
+ctx.arc(currX, currY, 1.5, 0, Math.PI * 2); // Normalized radius
+ctx.fill();
       }
 
       // 5. Draw Nodes
       layers.forEach((layer) => {
         layer.forEach((node) => {
-          // Cap the visual activation so the radius never exceeds a strict maximum
           const visualActivation = Math.min(node.activation, 1.2);
           const radius = 2 + visualActivation * 1.5;
           
-          // Core
-          ctx.fillStyle = `rgba(45, 212, 191, ${0.3 + visualActivation * 0.7})`;
+          const isMouse = node.activationType === 'mouse';
+          const rgb = isMouse ? '250, 204, 21' : '45, 212, 191';
+          
+          ctx.fillStyle = `rgba(${rgb}, ${0.3 + visualActivation * 0.7})`;
           ctx.beginPath();
           ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
           ctx.fill();
           
-          // Glow (reduced multiplier to prevent massive circles)
           if (visualActivation > 0.1) {
-            ctx.fillStyle = `rgba(45, 212, 191, ${visualActivation * 0.15})`;
+            ctx.fillStyle = `rgba(${rgb}, ${visualActivation * 0.15})`;
             ctx.beginPath();
             ctx.arc(node.x, node.y, radius * 2.5, 0, Math.PI * 2);
             ctx.fill();
