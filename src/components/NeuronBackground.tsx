@@ -48,7 +48,8 @@ export function NeuronBackground() {
     const mouse = { x: -1000, y: -1000 };
 
     const init = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2); 
+      // Limit DPR to 1.5 instead of 2 for better performance on high-res screens
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5); 
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       ctx.scale(dpr, dpr);
@@ -156,7 +157,9 @@ export function NeuronBackground() {
                node.activation = 1;
                node.cooldown = 30;
                node.outgoingEdges.forEach(edge => {
-                  signals.push({ edge, progress: 0, speed: 0.01 + Math.random() * 0.01 });
+                  if (signals.length < 1000) { // Global cap
+                    signals.push({ edge, progress: 0, speed: 0.01 + Math.random() * 0.01 });
+                  }
                });
             }
           }
@@ -178,13 +181,15 @@ export function NeuronBackground() {
       });
 
       // 3. Spontaneous Forward Pass (Batch Inference Simulation)
-      if (Math.random() < 0.01) { // 1% chance per frame to start a wave
+      if (Math.random() < 0.01 && signals.length < 50) { // Only start waves if network is quiet
         layers[0].forEach(node => {
            if (Math.random() > 0.3) { // 70% of input nodes fire
              node.activation = 1;
              node.cooldown = 40;
              node.outgoingEdges.forEach(edge => {
-               signals.push({ edge, progress: 0, speed: 0.01 + Math.random() * 0.015 });
+               if (signals.length < 1000) {
+                 signals.push({ edge, progress: 0, speed: 0.01 + Math.random() * 0.015 });
+               }
              });
            }
         });
@@ -198,17 +203,18 @@ export function NeuronBackground() {
         if (s.progress >= 1) {
           const target = s.edge.to;
           // Integrate signal
-          target.activation += s.edge.weight * 0.4;
+          target.activation += s.edge.weight * 0.35; // Slightly reduced impact
           signals.splice(i, 1);
           
           // Activation function (Threshold / Step)
-          if (target.activation >= 0.7 && target.cooldown <= 0) {
+          if (target.activation >= 0.85 && target.cooldown <= 0) { // Increased threshold to 0.85
             target.activation = 1;
-            target.cooldown = 25; // Refractory period
+            target.cooldown = 35; // Longer refractory period
             
             // Forward propagate
             target.outgoingEdges.forEach(edge => {
-              if (Math.random() < edge.weight + 0.3) { // Higher weight = more likely to transmit
+              // Higher weight + probability check to prevent saturation
+              if (Math.random() < edge.weight * 0.6 && signals.length < 1000) { 
                 signals.push({ edge, progress: 0, speed: 0.01 + Math.random() * 0.015 });
               }
             });
@@ -224,13 +230,9 @@ export function NeuronBackground() {
         const tailX = s.edge.from.x + (s.edge.to.x - s.edge.from.x) * tailProgress;
         const tailY = s.edge.from.y + (s.edge.to.y - s.edge.from.y) * tailProgress;
 
-        // Draw Trail
-        const gradient = ctx.createLinearGradient(currX, currY, tailX, tailY);
-        gradient.addColorStop(0, `rgba(45, 212, 191, 1)`); // Bright head
-        gradient.addColorStop(1, `rgba(45, 212, 191, 0)`); // Faded tail
-        
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 2;
+        // Draw Trail without expensive per-frame gradient instantiation
+        ctx.strokeStyle = `rgba(45, 212, 191, 0.4)`;
+        ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.moveTo(currX, currY);
         ctx.lineTo(tailX, tailY);
