@@ -45,17 +45,23 @@ export function BentoCard({ children, className, delay = 0 }: BentoCardProps) {
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ 
-        duration: 0.8, 
-        delay, 
-        type: "spring",
-        bounce: 0.3,
-        damping: 20,
-        stiffness: 80
+      initial={{ 
+        opacity: 0, 
+        y: shouldReduceMotion ? 0 : 60,
+        scale: shouldReduceMotion ? 1 : 0.95
       }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0,
+        scale: 1
+      }}
+      viewport={{ once: true, margin: "-15%" }}
+      transition={{ 
+        y: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
+        scale: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
+        opacity: { duration: 0.4, delay, ease: "easeOut" }
+      }}
+      style={{ willChange: "transform, opacity" }}
       className={cn(
         "relative overflow-hidden p-8 liquid-glass group",
         "transition-shadow duration-500",

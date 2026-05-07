@@ -5,6 +5,7 @@ import { Linkedin, Mail, ChevronRight, Download } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { NeuronBackground } from '@/components/NeuronBackground';
 import { BentoCard } from '@/components/BentoCard';
+import { cn } from '@/lib/utils';
 
 function LiveDuration({ start, end }: { start: string; end: string }) {
   const [duration, setDuration] = useState('');
@@ -56,6 +57,25 @@ function LiveDuration({ start, end }: { start: string; end: string }) {
 
 export default function Home() {
   const contactRef = useRef(null);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -45% 0px" } // Adjust margins to switch active state when a section covers ~45% of the screen from the bottom
+    );
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
   
   // Create a scroll-linked animation tied to the Contact section
   const { scrollYProgress } = useScroll({
@@ -65,7 +85,7 @@ export default function Home() {
 
   // Highlight expands as you scroll into the contact section
   // It starts at 10% into the scroll margin and finishes by 45%
-  const highlightWidth = useTransform(scrollYProgress, [0.1, 0.45], ["0%", "100%"]);
+  const highlightProgress = useTransform(scrollYProgress, [0.1, 0.45], [0, 1]);
   
   return (
     <div className="bg-slate-950 leading-relaxed text-slate-400 antialiased selection:bg-teal-300 selection:text-teal-900 min-h-screen relative">
@@ -84,8 +104,8 @@ export default function Home() {
             <div>
               <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-lg relative inline-block">
                 <motion.span 
-                  style={{ width: highlightWidth }}
-                  className="absolute inset-y-0 left-0 bg-[#298f88] -z-10"
+                  style={{ scaleX: highlightProgress, transformOrigin: "left" }}
+                  className="absolute inset-y-0 left-0 bg-[#298f88] -z-10 w-full"
                 />
                 <span>
                   Meet Patel
@@ -102,27 +122,27 @@ export default function Home() {
               <nav className="nav hidden lg:block mt-16">
                 <ul className="mt-8 w-max space-y-4">
                   <li>
-                    <a className="group flex items-center" href="#about">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm"></span>
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors">About</span>
+                    <a className="group flex items-center py-2" href="#about">
+                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'about' && "w-16 bg-teal-300")}></span>
+                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'about' && "text-white")}>About</span>
                     </a>
                   </li>
                   <li>
-                    <a className="group flex items-center" href="#projects">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm"></span>
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors">Selected Projects</span>
+                    <a className="group flex items-center py-2" href="#projects">
+                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'projects' && "w-16 bg-teal-300")}></span>
+                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'projects' && "text-white")}>Selected Projects</span>
                     </a>
                   </li>
                   <li>
-                    <a className="group flex items-center" href="#experience">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm"></span>
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors">Experience</span>
+                    <a className="group flex items-center py-2" href="#experience">
+                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'experience' && "w-16 bg-teal-300")}></span>
+                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'experience' && "text-white")}>Experience</span>
                     </a>
                   </li>
                   <li>
-                    <a className="group flex items-center" href="#contact">
-                      <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm"></span>
-                      <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors">Contact Me</span>
+                    <a className="group flex items-center py-2" href="#contact">
+                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'contact' && "w-16 bg-teal-300")}></span>
+                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'contact' && "text-white")}>Contact Me</span>
                     </a>
                   </li>
                 </ul>
@@ -412,47 +432,6 @@ export default function Home() {
                    </a>
                  </div>
               </BentoCard>
-            </section>
-                 <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">
-                   Let&apos;s build the <span className="relative inline-block px-2 overflow-hidden">
-                     <motion.span 
-                       style={{ scaleX: highlightProgress, transformOrigin: "left" }}
-                       className="absolute inset-y-0 left-0 bg-[#44ebd4] -z-10 w-full"
-                     />
-                     <span>
-                       future.
-                     </span>
-                   </span>
-                 </h3>
-                 <p className="text-slate-400 text-lg leading-relaxed max-w-xl mx-auto mb-12 px-4">
-                   Currently open to opportunities bridging complex mathematical theory and high-performance system engineering.
-                 </p>
-                 
-                 <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-10">
-                   <div className="flex flex-col items-center gap-3 w-full sm:w-auto">
-                     <a 
-                       href="mailto:m.patel6@student.fdu.edu" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       className="inline-flex items-center justify-center gap-3 bg-[#44ebd4] text-slate-950 px-10 py-4 rounded-full font-bold text-xs tracking-[0.15em] uppercase transition-all duration-500 hover:brightness-110 hover:shadow-[0_10px_40px_rgba(68,235,212,0.25)] w-full sm:w-auto"
-                     >
-                       <Mail size={18} strokeWidth={1.5} /> Get in Touch
-                     </a>
-                     <span className="text-[10px] text-slate-500 font-bold tracking-[0.2em] uppercase opacity-80 whitespace-nowrap">
-                       Will reply in &lt;6 hours
-                     </span>
-                   </div>
-
-                   <a 
-                     href="/Meet%20Patel-Resume.pdf" 
-                     target="_blank" 
-                     rel="noopener noreferrer"
-                     className="inline-flex items-center justify-center gap-3 bg-white/5 text-white border border-white/10 px-10 py-4 rounded-full font-bold text-xs tracking-[0.15em] uppercase transition-all duration-500 hover:bg-white/10 hover:border-white/20 w-full sm:w-auto"
-                   >
-                     <Download size={18} strokeWidth={1.5} /> Resume
-                   </a>
-                 </div>
-              </div>
             </section>
 
           </main>
