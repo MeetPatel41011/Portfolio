@@ -205,59 +205,68 @@ export default function Home() {
               <div className="space-y-6">
                 
                 {/* Proj 1 */}
-                <BentoCard className="p-8 group relative">
-                  <div className="z-10">
-                    <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
-                      Real-Time Multimodal Q&A System
-                      {/* <ArrowUpRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" /> */}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      Built a live multimodal question-answering pipeline using Qwen2-0.5B-Instruct and Apple&apos;s FastVLM, achieving a Time To First Token (TTFT) of under 100ms. Engineered an INT8 quantization and ONNX-based deployment pipeline, leveraging NPU acceleration via Core ML to achieve a total 4x reduction in inference latency.
-                    </p>
-                    <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
-                       <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">Core ML</span></li>
-                       <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">FastVLM</span></li>
-                       <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">Quantization</span></li>
-                       <li><span className="flex items-center rounded-full bg-teal-400/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">&lt;100ms TTFT</span></li>
-                    </ul>
-                  </div>
-                </BentoCard>
+                <a href="https://neuroyoga-presentationsite.vercel.app" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
+                  <BentoCard className="p-8 relative transition-transform duration-300 group-hover:-translate-y-1">
+                    <div className="z-10">
+                      <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
+                        Privacy Preserving Yoga Recommendation Model
+                        <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:translate-x-1" />
+                      </h3>
+                      <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
+                        <p>Built a 4-stage LLM data extraction pipeline to collect data of 1,345 yoga poses from 50+ raw PDFs, generating 282,207 training samples via a rule-based system, including medical constraint layers to ensure training data was grounded in verified literature.</p>
+                        <p>Architected a 100% on-device personalized yoga prediction application, purely using watch-sensor data via two-tower approach, executing inference locally. Pre-computed static yoga embeddings and generated live user embeddings for &lt;20ms cosine similarity search.</p>
+                        <p>Deployed the system asymmetrically to the ANE, orchestrating heavy pre-computation for the yoga tower (384-dim to 32-dim) and lightweight live inference for watch sensor data (17-dim to 32-dim), achieving a Recall@10 of 0.959 and NDCG@10 of 0.809 on cold-start validation.</p>
+                      </div>
+                      <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
+                         <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">PyTorch</span></li>
+                         <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">CoreML</span></li>
+                         <li><span className="flex items-center rounded-full bg-teal-400/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Two-Tower Architecture</span></li>
+                      </ul>
+                    </div>
+                  </BentoCard>
+                </a>
 
                 {/* Proj 2 */}
-                <BentoCard className="p-8 group relative">
-                  <div className="z-10">
-                    <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
-                      Privacy-Preserving Edge ML (Yoga)
-                      {/* <ArrowUpRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" /> */}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      Architected a privacy-centric AI pipeline using 100% on-device computation to ensure data isolation. Engineered a Knowledge Graph of 190+ poses and optimized a Graph Neural Network (GNN) via knowledge distillation into a lightweight Core ML model specifically optimized for the Apple Neural Engine (ANE).
-                    </p>
-                    <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
-                       <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">GNN</span></li>
-                       <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">Knowledge Distillation Pipeline</span></li>
-                       <li><span className="flex items-center rounded-full bg-teal-400/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">100% On-Device</span></li>
-                    </ul>
-                  </div>
-                </BentoCard>
+                <a href="https://github.com/MeetPatel41011/FastVLM" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
+                  <BentoCard className="p-8 relative transition-transform duration-300 group-hover:-translate-y-1">
+                    <div className="z-10">
+                      <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
+                        Real-Time Multimodal Q&amp;A System
+                        <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:translate-x-1" />
+                      </h3>
+                      <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
+                        <p>Architected a low-latency live video question answering system from handwritten questions using FastViTHD and Qwen2, compiled into an ONNX execution graph. Executed INT8 Post-Training Quantization and achieved a 4x latency reduction (sub 500ms TTFT) with a &lt;1.2% degradation in zero-shot accuracy.</p>
+                        <p>Engineered a decoupled architecture to independently scale the FastViTHD encoder and language model. Implemented aggressive Lanczos downscaling algorithm to restrict inputs to a single processing patch, reducing vision-tower compute by 80%.</p>
+                      </div>
+                      <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
+                         <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">PyTorch</span></li>
+                         <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">VLM</span></li>
+                         <li><span className="flex items-center rounded-full bg-teal-400/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">ONNX Runtime</span></li>
+                      </ul>
+                    </div>
+                  </BentoCard>
+                </a>
 
                  {/* Proj 3 */}
-                <BentoCard className="p-8 group relative">
-                  <div className="z-10">
-                    <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
-                      Neuromorphic vs. Transformer Benchmarking
-                      {/* <ArrowUpRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" /> */}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      Conducted accurate performance benchmarking comparing a pre-trained DistilBERT and a custom-built Spiking Neural Network (SNN) on a 20,000-sample NLP classification task. Fine-tuned the SNN to balance the accuracy/compute trade-off, achieving 81% of BERT&apos;s accuracy while being 48x more computationally efficient.
-                    </p>
-                    <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
-                       <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">SNNTorch</span></li>
-                       <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">DistilBERT</span></li>
-                       <li><span className="flex items-center rounded-full bg-teal-400/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">48x Efficiency</span></li>
-                    </ul>
-                  </div>
-                </BentoCard>
+                <a href="https://spikingneuralnetwork-presentationsite.vercel.app" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
+                  <BentoCard className="p-8 relative transition-transform duration-300 group-hover:-translate-y-1">
+                    <div className="z-10">
+                      <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
+                        Neuromorphic vs. Transformer NLP Benchmarking
+                        <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:translate-x-1" />
+                      </h3>
+                      <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
+                        <p>Implemented an SNN compression pipeline based on NVIDIA&apos;s 2:4 structured sparsity, mapping dense linear layers to PyTorch Semi-Structured tensors which can engage A100 Tensor Cores and reduce the memory footprint.</p>
+                        <p>Architected a low-power NLP microservice, replacing O(N&sup2;) Transformer attention with binary additions, achieving a ~150x reduction in compute energy with 89% accuracy retention.</p>
+                      </div>
+                      <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
+                         <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">PyTorch</span></li>
+                         <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">snnTorch</span></li>
+                         <li><span className="flex items-center rounded-full bg-teal-400/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Hardware Optimization</span></li>
+                      </ul>
+                    </div>
+                  </BentoCard>
+                </a>
 
               </div>
             </section>
