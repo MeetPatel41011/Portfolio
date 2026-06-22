@@ -205,7 +205,7 @@ export default function Home() {
               <div className="space-y-6">
                 
                 {/* Proj 1 */}
-                <a href="https://neuroyoga-presentationsite.vercel.app" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
+                <a href="https://neuro-yoga-presentation-site.vercel.app/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
                   <BentoCard className="p-8 relative transition-transform duration-300 group-hover:-translate-y-1">
                     <div className="z-10">
                       <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
@@ -227,7 +227,7 @@ export default function Home() {
                 </a>
 
                 {/* Proj 2 */}
-                <a href="https://github.com/MeetPatel41011/FastVLM" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
+                <a href="https://pmp0792--fastvlm-unified-web.modal.run" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
                   <BentoCard className="p-8 relative transition-transform duration-300 group-hover:-translate-y-1">
                     <div className="z-10">
                       <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
@@ -248,7 +248,7 @@ export default function Home() {
                 </a>
 
                  {/* Proj 3 */}
-                <a href="https://spikingneuralnetwork-presentationsite.vercel.app" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
+                <a href="https://spiking-neural-network-presentation.vercel.app/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
                   <BentoCard className="p-8 relative transition-transform duration-300 group-hover:-translate-y-1">
                     <div className="z-10">
                       <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
