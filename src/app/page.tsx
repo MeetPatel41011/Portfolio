@@ -115,7 +115,7 @@ export default function Home() {
                 Machine Learning Engineer
               </h2>
               <p className="mt-6 max-w-sm leading-relaxed text-slate-300 drop-shadow-sm font-medium">
-                I specialize in high-performance inference, hardware-aware optimization, and deploying complex AI architectures natively on edge devices.
+                I specialize in hardware-accelerated inference, distributed ML architectures, and deploying complex multi-modal AI systems.
               </p>
               
               {/* Navigation */}
@@ -186,10 +186,10 @@ export default function Home() {
                    TL;DR
                  </div>
                  <p className="text-xl md:text-2xl text-white font-medium leading-snug tracking-tight glass-text">
-                   I build high-performance ML systems that bridge the gap between theoretical models and <span className="text-teal-300">latency-constrained edge environments.</span>
+                   I build scalable ML architectures that bridge the gap between theoretical models and <span className="text-teal-300">hardware-accelerated execution.</span>
                  </p>
                  <p className="text-slate-300 leading-relaxed font-medium glass-text">
-                   My expertise lies in hardware-aware machine learning and on-device computation. I specialize in deploying models directly to edge devices utilizing Apple Silicon (Core ML / ANE), implementing rigorous INT8 quantization, optimizing complex Vision-Language Models (VLMs), and building scalable multi-agent frameworks. My research actively focuses on maximizing inference throughput while strictly maintaining data privacy through localized compute.
+                   My expertise lies in model optimization, MLOps, and systems engineering. I specialize in post-training quantization, execution graph compilation, and deploying complex Vision-Language Models (VLMs) using TensorRT and ONNX Runtime. My research and industry experience actively focus on maximizing inference throughput, resolving class imbalances in computer vision pipelines, and building scalable, serverless GPU infrastructure.
                  </p>
               </BentoCard>
             </section>
@@ -281,56 +281,58 @@ export default function Home() {
               
               <div className="space-y-6">
                 
-                {/* Incoming Exp */}
+                {/* Exp 1 */}
                 <BentoCard className="p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8 border border-teal-400/20 bg-teal-900/10 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-transparent opacity-50"></div>
-                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-teal-400 shrink-0 md:w-1/4" aria-label="May 2026 to July 2026">
-                    May 2026 — Jul 2026
-                    <div className="mt-3 text-[10px] text-teal-500 font-bold uppercase tracking-widest bg-teal-400/10 inline-block px-2 py-1 rounded-md border border-teal-400/20">Incoming</div>
+                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-teal-400 shrink-0 md:w-1/4" aria-label="May 2026 to Present">
+                    May 2026 — Present
+                    <div className="mt-3 text-[10px] text-teal-500 font-bold uppercase tracking-widest bg-teal-400/10 inline-block px-2 py-1 rounded-md border border-teal-400/20"><LiveDuration start="May 2026" end="Present" /></div>
                   </header>
                   <div className="z-10 md:w-3/4">
                     <h3 className="text-xl font-bold text-white group/link leading-snug">
                       <div>Deep Learning Intern</div>
-                      <div className="text-slate-400 font-medium text-lg mt-1">NJ Department of Health (DOH)</div>
+                      <div className="text-slate-400 font-medium text-lg mt-1">New Jersey Department of Health (DOH)</div>
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      Selected to develop and deploy a neural network to automate the quality classification of newborn screening (NBS) blood spot specimens. Tasked with conducting statistical data analysis to evaluate experimental error rates and determining the viability of utilizing unsatisfactory biological samples for diagnostic testing, informing future medical testing protocols.
-                    </p>
-                    <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
-                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Deep Learning</span></li>
-                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Neural Networks</span></li>
-                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Statistical Analysis</span></li>
-                    </ul>
-                  </div>
-                </BentoCard>
-
-                {/* Exp 1 */}
-                <BentoCard className="p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
-                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2025 to Present">
-                    Jan 2025 — Present
-                    <div className="mt-2 text-[10px] text-slate-500 font-medium"><LiveDuration start="Jan 2025" end="Present" /></div>
-                  </header>
-                  <div className="z-10 md:w-3/4">
-                    <h3 className="text-xl font-bold text-white group/link leading-snug">
-                      <div>Research Assistant</div>
-                      <div className="text-slate-400 font-medium text-lg mt-1">FDU</div>
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      Led research to resolve complex spatial dependencies in computer vision models using Graph Neural Networks (GNNs) and hybrid Vision Transformers (ViT), resulting in a paper acceptance at the IEEE ISEC&apos;26 conference. In another research benchmark, evaluated SOTA models across 10,000+ patient records, improving inference precision from 81.00% to 97.75%.
-                    </p>
+                    <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
+                      <p>Independently architected an end-to-end Computer Vision QC pipeline for blood specimen images, saving 2.5 hours of manual review daily across ~150 dried blood spot specimens.</p>
+                      <p>Benchmarked and combined OpenCV and YOLOv8m for specimen segmentation, balancing minimal memory requirements with high accuracy to overcome unstructured scanned artifacts, improving extraction from 92% to 99.5%.</p>
+                      <p>Implemented a hybrid architecture with ResNet50_2 and PatchCore for anomaly detection. Achieved 98% accuracy and 0.90 F1, utilizing PatchCore anomaly maps for biological explainability. Enforced fully local inference to meet HIPAA data sensitivity requirements.</p>
+                    </div>
                     <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
                       <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Computer Vision</span></li>
-                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">ViT</span></li>
-                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">GNN</span></li>
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">YOLOv8m</span></li>
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">ResNet</span></li>
                     </ul>
                   </div>
                 </BentoCard>
 
                 {/* Exp 2 */}
                 <BentoCard className="p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
-                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2025 to Present">
-                    Sep 2025 — Present
-                    <div className="mt-2 text-[10px] text-slate-500 font-medium"><LiveDuration start="Sep 2025" end="Present" /></div>
+                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="Jan 2025 to Present">
+                    Jan 2025 — Present
+                    <div className="mt-2 text-[10px] text-slate-500 font-medium"><LiveDuration start="Jan 2025" end="Present" /></div>
+                  </header>
+                  <div className="z-10 md:w-3/4">
+                    <h3 className="text-xl font-bold text-white group/link leading-snug">
+                      <div>Research Assistant</div>
+                      <div className="text-slate-400 font-medium text-lg mt-1">Fairleigh Dickinson University, New Jersey</div>
+                    </h3>
+                    <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
+                      <p>Achieved the highest model performance in a competitive multi-author benchmark using fine-tuned VGG16 on 10,000+ dermoscopic images (7-class, HAM10000). Reached 97.75% validation accuracy and F1 = 0.9547, outperforming baseline EfficientNetV2 (91.32%) and ViT-B/16 (94.2%).</p>
+                      <p>Resolved severe class imbalance via inverse-frequency weighted CrossEntropyLoss and stabilized test fluctuations using ReduceLROnPlateau scheduling and gradient clipping. Reduced train-val gap to 0.20%.</p>
+                    </div>
+                    <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">VGG16</span></li>
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">PyTorch</span></li>
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Model Benchmarking</span></li>
+                    </ul>
+                  </div>
+                </BentoCard>
+
+                {/* Exp 3 */}
+                <BentoCard className="p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
+                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="Sep 2025 to May 2026">
+                    Sep 2025 — May 2026
                   </header>
                   <div className="z-10 md:w-3/4">
                     <h3 className="text-xl font-bold text-white group/link leading-snug">
@@ -347,23 +349,25 @@ export default function Home() {
                   </div>
                 </BentoCard>
 
-                {/* Exp 3 */}
+                {/* Exp 4 */}
                 <BentoCard className="p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
-                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="2023">
+                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="Jan 2023 to April 2023">
                     Jan 2023 — Apr 2023
                     <div className="mt-2 text-[10px] text-slate-500 font-medium"><LiveDuration start="Jan 2023" end="Apr 2023" /></div>
                   </header>
                   <div className="z-10 md:w-3/4">
                     <h3 className="text-xl font-bold text-white group/link leading-snug">
-                      <div>ML Intern</div>
-                      <div className="text-slate-400 font-medium text-lg mt-1">Tri State Technologies</div>
+                      <div>Machine Learning Intern</div>
+                      <div className="text-slate-400 font-medium text-lg mt-1">Tri State Technologies, Ahmedabad, India</div>
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      Developed and deployed ML inference APIs using FastAPI, establishing seamless integration with frontend interfaces. Streamlined complex data preprocessing pipelines to normalize datasets, significantly reducing model noise and improving training quality.
-                    </p>
+                    <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
+                      <p>Improved production model accuracy by 17% after optimizing the feature extraction pipeline. Resolved feature conflicts and upstream noise contamination that degraded model performance.</p>
+                      <p>Managed an end-to-end ML stack via multi-endpoint FastAPI service deployed on GCP and Modal.com for scalable, serverless GPU execution and Jenkins CI/CD.</p>
+                    </div>
                     <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
                       <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">FastAPI</span></li>
-                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Data Pipelines</span></li>
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">GCP & Modal</span></li>
+                      <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Jenkins CI/CD</span></li>
                     </ul>
                   </div>
                 </BentoCard>
