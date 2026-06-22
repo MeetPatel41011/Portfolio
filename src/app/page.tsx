@@ -282,11 +282,10 @@ export default function Home() {
               <div className="space-y-6">
                 
                 {/* Exp 1 */}
-                <BentoCard className="p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8 border border-teal-400/20 bg-teal-900/10 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-transparent opacity-50"></div>
-                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-teal-400 shrink-0 md:w-1/4" aria-label="May 2026 to Present">
+                <BentoCard className="p-8 group relative flex flex-col md:flex-row gap-6 md:gap-8">
+                  <header className="z-10 mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 shrink-0 md:w-1/4" aria-label="May 2026 to Present">
                     May 2026 — Present
-                    <div className="mt-3 text-[10px] text-teal-500 font-bold uppercase tracking-widest bg-teal-400/10 inline-block px-2 py-1 rounded-md border border-teal-400/20"><LiveDuration start="May 2026" end="Present" /></div>
+                    <div className="mt-2 text-[10px] text-slate-500 font-medium"><LiveDuration start="May 2026" end="Present" /></div>
                   </header>
                   <div className="z-10 md:w-3/4">
                     <h3 className="text-xl font-bold text-white group/link leading-snug">
