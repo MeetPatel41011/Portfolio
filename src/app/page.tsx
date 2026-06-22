@@ -186,7 +186,7 @@ export default function Home() {
                    TL;DR
                  </div>
                  <p className="text-xl md:text-2xl text-white font-medium leading-snug tracking-tight glass-text">
-                   I build scalable ML architectures that bridge the gap between theoretical models and <span className="text-teal-300">hardware-accelerated execution.</span>
+                   Let's break the problem, discuss and get the ideas and build from <span className="text-teal-300">mvp to production product.</span>
                  </p>
                  <p className="text-slate-300 leading-relaxed font-medium glass-text">
                    I specialize in making and managing scalable machine learning systems, working on Deep Learning models from scratch, making multi-modal systems using LLMs, VLMs, a2a, mcp, sub-agents and different kinds of RAGs.
