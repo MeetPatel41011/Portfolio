@@ -189,7 +189,7 @@ export default function Home() {
                    Let's break the problem, discuss and get the ideas and build from <span className="text-teal-300">mvp to production product.</span>
                  </p>
                  <p className="text-slate-300 leading-relaxed font-medium glass-text">
-                   I specialize in making and managing scalable machine learning systems, working on Deep Learning models from scratch, making multi-modal systems using LLMs, VLMs, a2a, mcp, sub-agents and different kinds of RAGs.
+                   My expertise lies in model optimization, MLOps, and systems engineering. I specialize in making and managing scalable machine learning systems, working on Deep Learning models from scratch, making multi-modal systems using LLMs, VLMs, a2a, mcp, sub-agents and different kinds of RAGs. My research and industry experience actively focus on maximizing inference throughput, resolving class imbalances in computer vision pipelines, and building scalable, serverless GPU infrastructure.
                  </p>
               </BentoCard>
             </section>
