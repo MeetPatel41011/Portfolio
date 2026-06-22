@@ -115,7 +115,7 @@ export default function Home() {
                 Machine Learning Engineer
               </h2>
               <p className="mt-6 max-w-sm leading-relaxed text-slate-300 drop-shadow-sm font-medium">
-                I specialize in hardware-accelerated inference, distributed ML architectures, and deploying complex multi-modal AI systems.
+                Let's break it, get it and make it. 🔨
               </p>
               
               {/* Navigation */}
@@ -189,7 +189,7 @@ export default function Home() {
                    I build scalable ML architectures that bridge the gap between theoretical models and <span className="text-teal-300">hardware-accelerated execution.</span>
                  </p>
                  <p className="text-slate-300 leading-relaxed font-medium glass-text">
-                   My expertise lies in model optimization, MLOps, and systems engineering. I specialize in post-training quantization, execution graph compilation, and deploying complex Vision-Language Models (VLMs) using TensorRT and ONNX Runtime. My research and industry experience actively focus on maximizing inference throughput, resolving class imbalances in computer vision pipelines, and building scalable, serverless GPU infrastructure.
+                   I specialize in making and managing scalable machine learning systems, working on Deep Learning models from scratch, making multi-modal systems using LLMs, VLMs, a2a, mcp, sub-agents and different kinds of RAGs.
                  </p>
               </BentoCard>
             </section>
