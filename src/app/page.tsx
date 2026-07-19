@@ -115,7 +115,7 @@ export default function Home() {
                 Machine Learning Engineer
               </h2>
               <p className="mt-6 max-w-sm leading-relaxed text-slate-300 drop-shadow-sm font-medium">
-                Let's break it, get it and make it. 🔨
+                Let's break it, and make it. 🔨
               </p>
               
               {/* Navigation */}
@@ -125,6 +125,12 @@ export default function Home() {
                     <a className="group flex items-center py-2" href="#about">
                       <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'about' && "w-16 bg-teal-300")}></span>
                       <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'about' && "text-white")}>About</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="group flex items-center py-2" href="#skills">
+                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'skills' && "w-16 bg-teal-300")}></span>
+                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'skills' && "text-white")}>Skills</span>
                     </a>
                   </li>
                   <li>
@@ -186,12 +192,73 @@ export default function Home() {
                    TL;DR
                  </div>
                  <p className="text-xl md:text-2xl text-white font-medium leading-snug tracking-tight glass-text">
-                   Let's break the problem, discuss and get the ideas and build from <span className="text-teal-300">mvp to production product.</span>
+                   I build machine learning systems that actually scale, taking complex ideas from the whiteboard to a <span className="text-teal-300">production-ready product.</span>
                  </p>
                  <p className="text-slate-300 leading-relaxed font-medium glass-text">
-                   My expertise lies in model optimization, MLOps, and systems engineering. I specialize in making and managing scalable machine learning systems, working on Deep Learning models from scratch, making multi-modal systems using LLMs, VLMs, a2a, mcp, sub-agents and different kinds of RAGs. My research and industry experience actively focus on maximizing inference throughput, resolving class imbalances in computer vision pipelines, and building scalable, serverless GPU infrastructure.
+                   I specialize in model optimization, MLOps, and systems engineering. Whether training deep learning models from scratch or designing multi-modal architectures with LLMs and VLMs, I focus heavily on performance. I spend most of my time maximizing inference throughput, fixing severe class imbalances in computer vision pipelines, and spinning up serverless GPU infrastructure.
                  </p>
               </BentoCard>
+            </section>
+
+            {/* SKILLS */}
+            <section id="skills" className="scroll-mt-24">
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold tracking-tight text-white flex items-center gap-4">
+                  <span className="h-px w-8 bg-teal-400/50"></span> Skills
+                </h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <BentoCard className="p-6 space-y-3 group hover:border-teal-400/20 transition-colors">
+                   <h3 className="text-lg font-bold text-white glass-text">Languages</h3>
+                   <ul className="flex flex-wrap gap-2">
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Python</span></li>
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">SQL</span></li>
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">JavaScript / TypeScript</span></li>
+                   </ul>
+                </BentoCard>
+
+                <BentoCard className="p-6 space-y-3 group hover:border-white/20 transition-colors">
+                   <h3 className="text-lg font-bold text-white glass-text">ML Frameworks & Inference</h3>
+                   <ul className="flex flex-wrap gap-2">
+                     <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">PyTorch</span></li>
+                     <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">TensorFlow</span></li>
+                     <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">ONNX</span></li>
+                     <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">CoreML</span></li>
+                     <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">TensorRT</span></li>
+                     <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">vLLM</span></li>
+                   </ul>
+                </BentoCard>
+
+                <BentoCard className="p-6 space-y-3 group hover:border-teal-400/20 transition-colors">
+                   <h3 className="text-lg font-bold text-white glass-text">Model Optimization</h3>
+                   <ul className="flex flex-wrap gap-2">
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">INT8 PTQ</span></li>
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Execution Graph Compilation</span></li>
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Hardware-Accelerated Inference</span></li>
+                   </ul>
+                </BentoCard>
+
+                <BentoCard className="p-6 space-y-3 group hover:border-white/20 transition-colors">
+                   <h3 className="text-lg font-bold text-white glass-text">Architectures & Systems</h3>
+                   <ul className="flex flex-wrap gap-2">
+                     <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">VLMs & Multi-Modal</span></li>
+                     <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">Distributed ML</span></li>
+                     <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">Context-Aware AI</span></li>
+                   </ul>
+                </BentoCard>
+
+                <BentoCard className="p-6 space-y-3 group md:col-span-2 hover:border-teal-400/20 transition-colors">
+                   <h3 className="text-lg font-bold text-white glass-text">MLOps & Cloud</h3>
+                   <ul className="flex flex-wrap gap-2">
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">GCP</span></li>
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Docker</span></li>
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Kubernetes</span></li>
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">FastAPI</span></li>
+                     <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Jenkins</span></li>
+                   </ul>
+                </BentoCard>
+              </div>
             </section>
 
             {/* PROJECTS */}
@@ -213,9 +280,9 @@ export default function Home() {
                         <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:translate-x-1" />
                       </h3>
                       <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                        <p>Built a 4-stage LLM data extraction pipeline to collect data of 1,345 yoga poses from 50+ raw PDFs, generating 282,207 training samples via a rule-based system, including medical constraint layers to ensure training data was grounded in verified literature.</p>
-                        <p>Architected a 100% on-device personalized yoga prediction application, purely using watch-sensor data via two-tower approach, executing inference locally. Pre-computed static yoga embeddings and generated live user embeddings for &lt;20ms cosine similarity search.</p>
-                        <p>Deployed the system asymmetrically to the ANE, orchestrating heavy pre-computation for the yoga tower (384-dim to 32-dim) and lightweight live inference for watch sensor data (17-dim to 32-dim), achieving a Recall@10 of 0.959 and NDCG@10 of 0.809 on cold-start validation.</p>
+                        <p>Extracted 1,345 yoga poses from over 50 PDFs using a four-stage LLM pipeline. I added medical rule checks to the data generation process, creating 282,207 safe, medically verified training samples.</p>
+                        <p>Built a completely private, on-device recommendation app. It reads live smartwatch sensor data and matches it against pre-calculated yoga poses in under 20 milliseconds using a two-tower neural network.</p>
+                        <p>Split the workload to run smoothly on Apple's Neural Engine. I compressed the heavy yoga data upfront (from 384 to 32 dimensions) so the watch only handles light real-time processing, achieving a 0.959 Recall@10 on completely new users.</p>
                       </div>
                       <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
                          <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">PyTorch</span></li>
@@ -235,8 +302,8 @@ export default function Home() {
                         <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:translate-x-1" />
                       </h3>
                       <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                        <p>Architected a low-latency live video question answering system from handwritten questions using FastViTHD and Qwen2, compiled into an ONNX execution graph. Executed INT8 Post-Training Quantization and achieved a 4x latency reduction (sub 500ms TTFT) with a &lt;1.2% degradation in zero-shot accuracy.</p>
-                        <p>Engineered a decoupled architecture to independently scale the FastViTHD encoder and language model. Implemented aggressive Lanczos downscaling algorithm to restrict inputs to a single processing patch, reducing vision-tower compute by 80%.</p>
+                        <p>Created a live video Q&amp;A system that reads handwritten questions. By compiling FastViTHD and Qwen2 into an ONNX graph and quantizing the model to INT8, I cut latency by 4x (under 500ms response time) while losing less than 1.2% accuracy.</p>
+                        <p>Separated the vision and language models so they scale independently. I added a Lanczos downscaling step to shrink image inputs down to a single patch, which eliminated 80% of the required vision compute overhead.</p>
                       </div>
                       <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
                          <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">PyTorch</span></li>
@@ -256,8 +323,8 @@ export default function Home() {
                         <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:translate-x-1" />
                       </h3>
                       <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                        <p>Implemented an SNN compression pipeline based on NVIDIA&apos;s 2:4 structured sparsity, mapping dense linear layers to PyTorch Semi-Structured tensors which can engage A100 Tensor Cores and reduce the memory footprint.</p>
-                        <p>Architected a low-power NLP microservice, replacing O(N&sup2;) Transformer attention with binary additions, achieving a ~150x reduction in compute energy with 89% accuracy retention.</p>
+                        <p>Built a Spiking Neural Network (SNN) compression pipeline using NVIDIA&apos;s 2:4 structured sparsity. By converting dense layers to semi-structured PyTorch tensors, the system directly engages A100 Tensor Cores to aggressively save memory.</p>
+                        <p>Designed a low-power NLP service that swaps expensive O(N&sup2;) Transformer attention math for simple binary addition. This dropped compute energy by roughly 150x while retaining 89% of the original model accuracy.</p>
                       </div>
                       <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
                          <li><span className="flex items-center rounded-full bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">PyTorch</span></li>
@@ -293,9 +360,9 @@ export default function Home() {
                       <div className="text-slate-400 font-medium text-lg mt-1">New Jersey Department of Health (DOH)</div>
                     </h3>
                     <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      <p>Independently architected an end-to-end Computer Vision QC pipeline for blood specimen images, saving 2.5 hours of manual review daily across ~150 dried blood spot specimens.</p>
-                      <p>Benchmarked and combined OpenCV and YOLOv8m for specimen segmentation, balancing minimal memory requirements with high accuracy to overcome unstructured scanned artifacts, improving extraction from 92% to 99.5%.</p>
-                      <p>Implemented a hybrid architecture with ResNet50_2 and PatchCore for anomaly detection. Achieved 98% accuracy and 0.90 F1, utilizing PatchCore anomaly maps for biological explainability. Enforced fully local inference to meet HIPAA data sensitivity requirements.</p>
+                      <p>Built a computer vision pipeline that automatically checks blood specimen images, saving the team 2.5 hours of manual work every day across 150 samples.</p>
+                      <p>Replaced the old unstructured extraction method with a YOLOv8m and OpenCV model. This bumped extraction accuracy from 92% to 99.5% without exceeding strict hardware memory limits.</p>
+                      <p>Set up a ResNet and PatchCore system to find anomalies. It hit 98% accuracy (0.90 F1 score) and generated visual maps so biologists could see exactly why a sample failed. Kept all processing local to comply with HIPAA privacy rules.</p>
                     </div>
                     <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
                       <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">Computer Vision</span></li>
@@ -317,8 +384,8 @@ export default function Home() {
                       <div className="text-slate-400 font-medium text-lg mt-1">Fairleigh Dickinson University, New Jersey</div>
                     </h3>
                     <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      <p>Achieved the highest model performance in a competitive multi-author benchmark using fine-tuned VGG16 on 10,000+ dermoscopic images (7-class, HAM10000). Reached 97.75% validation accuracy and F1 = 0.9547, outperforming baseline EfficientNetV2 (91.32%) and ViT-B/16 (94.2%).</p>
-                      <p>Resolved severe class imbalance via inverse-frequency weighted CrossEntropyLoss and stabilized test fluctuations using ReduceLROnPlateau scheduling and gradient clipping. Reduced train-val gap to 0.20%.</p>
+                      <p>Trained a VGG16 model for skin cancer classification that beat competing baseline architectures like EfficientNetV2 (91.32%) and ViT-B/16 (94.2%). Reached 97.75% accuracy and a 0.95 F1 score on a dataset of over 10,000 images.</p>
+                      <p>Fixed severe dataset imbalance by weighting the loss function. Added gradient clipping and dynamic learning rate scheduling to stop the model from crashing during testing, which shrunk the train-test performance gap to just 0.20%.</p>
                     </div>
                     <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
                       <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">VGG16</span></li>
@@ -339,7 +406,7 @@ export default function Home() {
                       <div className="text-slate-400 font-medium text-lg mt-1">FDU</div>
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      Evaluated coursework for 150+ students, focusing on the reinforcement of Machine Learning concepts and practical application. Responsible for the detailed assessment of 85+ academic projects, fostering an environment of continuous architectural improvement.
+                      Mentored 150+ students in practical Machine Learning applications. I reviewed and provided architectural feedback on over 85 academic projects, guiding students from basic concepts to functional models.
                     </p>
                     <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
                       <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">ML Theory</span></li>
@@ -360,8 +427,8 @@ export default function Home() {
                       <div className="text-slate-400 font-medium text-lg mt-1">Tri State Technologies, Ahmedabad, India</div>
                     </h3>
                     <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      <p>Improved production model accuracy by 17% after optimizing the feature extraction pipeline. Resolved feature conflicts and upstream noise contamination that degraded model performance.</p>
-                      <p>Managed an end-to-end ML stack via multi-endpoint FastAPI service deployed on GCP and Modal.com for scalable, serverless GPU execution and Jenkins CI/CD.</p>
+                      <p>Dug into the feature extraction pipeline, found upstream noise causing data conflicts, and rewrote the logic. This single fix improved our production model accuracy by 17%.</p>
+                      <p>Handled the entire deployment stack. Packaged the models into FastAPI services and pushed them to Google Cloud and Modal.com to run on serverless GPUs, automating the whole process with Jenkins CI/CD.</p>
                     </div>
                     <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
                       <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">FastAPI</span></li>
@@ -383,7 +450,7 @@ export default function Home() {
                       <div className="text-slate-400 font-medium text-lg mt-1">Vikartr Technologies</div>
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
-                      Architected high-performance, dynamic user interfaces leveraging React.js and Tailwind CSS to significantly accelerate page rendering. Overhauled legacy codebases by implementing advanced React Hooks, ensuring robust state management and efficient API integrations.
+                      Built fast, dynamic user interfaces using React and Tailwind CSS. I overhauled the legacy codebase by migrating to modern React Hooks, which cleaned up state management and made API integrations much more reliable.
                     </p>
                     <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
                       <li><span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-teal-300 border border-teal-400/20">React</span></li>
