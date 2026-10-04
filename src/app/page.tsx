@@ -121,36 +121,31 @@ export default function Home() {
               {/* Navigation */}
               <nav className="nav hidden lg:block mt-16">
                 <ul className="mt-8 w-max space-y-4">
-                  <li>
-                    <a className="group flex items-center py-2" href="#about">
-                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'about' && "w-16 bg-teal-300")}></span>
-                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'about' && "text-white")}>About</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="group flex items-center py-2" href="#skills">
-                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'skills' && "w-16 bg-teal-300")}></span>
-                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'skills' && "text-white")}>Skills</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="group flex items-center py-2" href="#projects">
-                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'projects' && "w-16 bg-teal-300")}></span>
-                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'projects' && "text-white")}>Selected Projects</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="group flex items-center py-2" href="#experience">
-                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'experience' && "w-16 bg-teal-300")}></span>
-                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'experience' && "text-white")}>Experience</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="group flex items-center py-2" href="#contact">
-                      <span className={cn("nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300 shadow-sm", activeSection === 'contact' && "w-16 bg-teal-300")}></span>
-                      <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === 'contact' && "text-white")}>Contact Me</span>
-                    </a>
-                  </li>
+                  {[
+                    { id: 'about', label: 'About' },
+                    { id: 'skills', label: 'Skills' },
+                    { id: 'projects', label: 'Selected Projects' },
+                    { id: 'experience', label: 'Experience' },
+                    { id: 'contact', label: 'Contact Me' },
+                  ].map((section) => (
+                    <li key={section.id}>
+                      <a className="group flex items-center py-2" href={`#${section.id}`}>
+                        <div className="relative flex items-center h-px w-16 mr-4">
+                          <span className="absolute inset-0 w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-teal-300" />
+                          {activeSection === section.id && (
+                            <motion.span 
+                              layoutId="activeNavIndicator"
+                              className="absolute inset-0 bg-teal-300 shadow-sm z-10"
+                              transition={{ type: "spring", bounce: 0.1, duration: 0.4 }}
+                            />
+                          )}
+                        </div>
+                        <span className={cn("nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-white drop-shadow-sm transition-colors", activeSection === section.id && "text-white")}>
+                          {section.label}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </nav>
             </div>
@@ -163,12 +158,12 @@ export default function Home() {
                 </a>
               </li> */}
               <li className="text-xs">
-                <a className="block text-slate-400 hover:text-white transition-all hover:scale-110 drop-shadow-md" href="https://www.linkedin.com/in/meetpatel5" target="_blank" rel="noopener noreferrer">
+                <a className="block text-slate-400 hover:text-white transition-all duration-200 ease-out hover:scale-110 active:scale-95 drop-shadow-md" href="https://www.linkedin.com/in/meetpatel5" target="_blank" rel="noopener noreferrer">
                   <span className="sr-only">LinkedIn</span><Linkedin size={26} />
                 </a>
               </li>
               <li className="text-xs">
-                <a className="block text-slate-400 hover:text-white transition-all hover:scale-110 drop-shadow-md" href="mailto:m.patel6@student.fdu.edu" target="_blank" rel="noopener noreferrer">
+                <a className="block text-slate-400 hover:text-white transition-all duration-200 ease-out hover:scale-110 active:scale-95 drop-shadow-md" href="mailto:m.patel6@student.fdu.edu" target="_blank" rel="noopener noreferrer">
                   <span className="sr-only">Email</span><Mail size={26} />
                 </a>
               </li>
@@ -273,11 +268,11 @@ export default function Home() {
                 
                 {/* Proj 1 */}
                 <a href="https://neuro-yoga-presentation-site.vercel.app/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
-                  <BentoCard className="p-8 relative transition-transform duration-300 group-hover:-translate-y-1">
+                  <BentoCard className="p-8 relative">
                     <div className="z-10">
                       <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
                         Privacy Preserving Yoga Recommendation Model
-                        <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:translate-x-1" />
+                        <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all duration-200 ease-out group-hover:translate-x-1" />
                       </h3>
                       <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
                         <p>Extracted 1,345 yoga poses from over 50 PDFs using a four-stage LLM pipeline. I added medical rule checks to the data generation process, creating 282,207 safe, medically verified training samples.</p>
@@ -295,11 +290,11 @@ export default function Home() {
 
                 {/* Proj 2 */}
                 <a href="https://pmp0792--fastvlm-unified-web.modal.run" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
-                  <BentoCard className="p-8 relative transition-transform duration-300 group-hover:-translate-y-1">
+                  <BentoCard className="p-8 relative">
                     <div className="z-10">
                       <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
                         Real-Time Multimodal Q&amp;A System
-                        <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:translate-x-1" />
+                        <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all duration-200 ease-out group-hover:translate-x-1" />
                       </h3>
                       <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
                         <p>Created a live video Q&amp;A system that reads handwritten questions. By compiling FastViTHD and Qwen2 into an ONNX graph and quantizing the model to INT8, I cut latency by 4x (under 500ms response time) while losing less than 1.2% accuracy.</p>
@@ -316,11 +311,11 @@ export default function Home() {
 
                  {/* Proj 3 */}
                 <a href="https://spiking-neural-network-presentation.vercel.app/" target="_blank" rel="noopener noreferrer" className="block cursor-pointer group">
-                  <BentoCard className="p-8 relative transition-transform duration-300 group-hover:-translate-y-1">
+                  <BentoCard className="p-8 relative">
                     <div className="z-10">
                       <h3 className="font-bold text-xl text-white flex items-center gap-2 glass-text">
                         Neuromorphic vs. Transformer NLP Benchmarking
-                        <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all group-hover:translate-x-1" />
+                        <ChevronRight className="inline-block h-5 w-5 text-slate-500 group-hover:text-teal-300 transition-all duration-200 ease-out group-hover:translate-x-1" />
                       </h3>
                       <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300 font-medium glass-text">
                         <p>Built a Spiking Neural Network (SNN) compression pipeline using NVIDIA&apos;s 2:4 structured sparsity. By converting dense layers to semi-structured PyTorch tensors, the system directly engages A100 Tensor Cores to aggressively save memory.</p>
@@ -492,7 +487,7 @@ export default function Home() {
                        href="mailto:m.patel6@student.fdu.edu" 
                        target="_blank" 
                        rel="noopener noreferrer"
-                       className="inline-flex items-center justify-center gap-3 bg-[#44ebd4] text-slate-950 px-10 py-4 rounded-full font-bold text-xs tracking-[0.15em] uppercase transition-all duration-500 hover:brightness-110 hover:shadow-[0_10px_40px_rgba(68,235,212,0.25)] w-full sm:w-auto"
+                       className="inline-flex items-center justify-center gap-3 bg-[#44ebd4] text-slate-950 px-10 py-4 rounded-full font-bold text-xs tracking-[0.15em] uppercase transition-all duration-200 ease-out hover:brightness-110 hover:shadow-[0_10px_40px_rgba(68,235,212,0.25)] active:scale-95 w-full sm:w-auto"
                      >
                        <Mail size={18} strokeWidth={1.5} /> Get in Touch
                      </a>
@@ -505,7 +500,7 @@ export default function Home() {
                      href="/Meet_Patel_SWE_ML_Resume.pdf" 
                      target="_blank" 
                      rel="noopener noreferrer"
-                     className="inline-flex items-center justify-center gap-3 bg-white/5 text-white border border-white/10 px-10 py-4 rounded-full font-bold text-xs tracking-[0.15em] uppercase transition-all duration-500 hover:bg-white/10 hover:border-white/20 w-full sm:w-auto"
+                     className="inline-flex items-center justify-center gap-3 bg-white/5 text-white border border-white/10 px-10 py-4 rounded-full font-bold text-xs tracking-[0.15em] uppercase transition-all duration-200 ease-out hover:bg-white/10 hover:border-white/20 active:scale-95 w-full sm:w-auto"
                    >
                      <Download size={18} strokeWidth={1.5} /> Resume
                    </a>

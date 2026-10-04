@@ -37,8 +37,8 @@ export function MagneticButton({ children, as: Component = "button", className, 
       ref={ref}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
-      animate={{ x, y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 1 }}
+      animate={{ transform: `translate(${x}px, ${y}px)` }}
+      transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
       className="relative inline-flex"
     >
       <Component className={className} {...props}>

@@ -61,7 +61,7 @@ export function Accordion({ title, summary, tags, details, githubUrl, type = 'pr
         <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
           <ChevronDown 
             size={16} 
-            className={cn("transition-transform duration-300", isOpen && "rotate-180")} 
+            className={cn("transition-transform duration-[250ms] ease-[cubic-bezier(0.77,0,0.175,1)]", isOpen && "rotate-180")} 
           />
           {isOpen ? "Collapse Details" : type === 'project' ? "View Architecture" : "Read Abstract"}
         </div>
@@ -73,7 +73,7 @@ export function Accordion({ title, summary, tags, details, githubUrl, type = 'pr
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: "easeInOut" }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.25, ease: [0.77, 0, 0.175, 1] }}
           >
             <div className="px-6 pb-8 md:px-8 md:pb-10 pt-2 border-t border-slate-200 dark:border-slate-800/50 bg-slate-100/50 dark:bg-slate-900/40 transition-colors">
               <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
