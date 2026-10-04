@@ -1,4 +1,7 @@
-import React from 'react';
+"use client";
+
+import React, { useRef, useEffect } from 'react';
+import { liquidGlass } from '@/lib/liquid-glass';
 
 interface ExperienceItemProps {
   role: string;
@@ -8,8 +11,22 @@ interface ExperienceItemProps {
 }
 
 export function ExperienceItem({ role, company, period, description }: ExperienceItemProps) {
+  const cardRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!cardRef.current) return;
+    const glass = liquidGlass(cardRef.current, {
+      scale: -112,
+      chroma: 6,
+      border: 0.07,
+      blur: 12,
+      saturate: 1.5,
+    });
+    return () => glass.destroy();
+  }, []);
+
   return (
-    <article className="mb-12 relative group liquid-glass p-8">
+    <article ref={cardRef} className="mb-12 relative group liquid-glass p-8">
       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-4 gap-2 sm:gap-4">
         <h3 className="text-xl font-semibold text-slate-100 group-hover:text-blue-400 transition-colors">
           {role} <span className="text-slate-400 font-normal">at {company}</span>

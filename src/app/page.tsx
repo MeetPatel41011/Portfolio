@@ -102,7 +102,7 @@ export default function Home() {
           {/* LEFT COLUMN - STICKY */}
           <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[45%] lg:flex-col lg:justify-between lg:py-24">
             <div>
-              <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-lg relative inline-block">
+              <h1 className="text-5xl font-bold tracking-tighter leading-none text-white sm:text-7xl drop-shadow-lg relative inline-block mb-2">
                 <motion.span 
                   style={{ scaleX: highlightProgress, transformOrigin: "left" }}
                   className="absolute inset-y-0 left-0 bg-[#298f88] -z-10 w-full"

@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Github } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { liquidGlass } from '@/lib/liquid-glass';
 
 interface ProjectCardProps {
   title: string;
@@ -13,6 +14,19 @@ interface ProjectCardProps {
 
 export function ProjectCard({ title, description, tags, githubUrl }: ProjectCardProps) {
   const shouldReduceMotion = useReducedMotion();
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!cardRef.current) return;
+    const glass = liquidGlass(cardRef.current, {
+      scale: -112,
+      chroma: 6,
+      border: 0.07,
+      blur: 12,
+      saturate: 1.5,
+    });
+    return () => glass.destroy();
+  }, []);
 
   const cardVariants = {
     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
@@ -21,6 +35,7 @@ export function ProjectCard({ title, description, tags, githubUrl }: ProjectCard
 
   return (
     <motion.article 
+      ref={cardRef}
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
